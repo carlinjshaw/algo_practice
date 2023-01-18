@@ -13,6 +13,18 @@ function sum(n) {
     return n + sum(n - 1);
   }
 
+  
+  //MY ITERATIVE VERSION OF SUM RECURSION
+  function iterationSum(n){
+      let sum = 0
+      for(let i = n; i > 0; i--){
+          sum += i;
+    }
+    return sum;
+}
+console.log("sum recursive",sum(10))
+console.log("sum iterative",sum(10))
+
 
   /*
   In this second example, we will study another very popular example of the recursive function. 
@@ -23,16 +35,54 @@ function sum(n) {
 else if (b-1)! *b iff b>0
   */
 
+function factorial(num){
 
-  //declaring a function func
-function fact(b) {
-    //declaring a variable
-    var res = 1;
-    //for loop to find the factorial of the number
-    for (let i = b; i > 1; i--) {
-    //fetching and consolidating the result statement
-    res *= i;
+    if (num === 0) return 1
+    if (num === 1) return 1;
+
+    let fact = num;
+
+    fact = fact * factorial(num-1);
+    return fact;
+}
+
+function iterativeFact(num){
+    if (num === 0) return 1
+    if (num === 1) return 1;
+
+    for(let i = num - 1; i > 1; i--){
+        num = num * i
     }
-    //returning the result which contains the factorial of the number b
-    return res;
+    return num;
+}
+
+console.log("recursive factorial", factorial(12))
+
+console.log("iterative factorial", iterativeFact(12))
+
+/*
+given a particular index,
+funtion returns the fibonacci number at that index
+*/
+function fib(n){
+    if (n <= 2) return 1;
+    return fib(n-1) + fib(n-2);
+}
+
+const iterativeFib = (n) => {
+    if (n <= 2) return 1;
+    let first = 1;
+    let second = 1;
+    let sum = 0;
+    while(n>2){
+        sum = first + second;
+        first = second;
+        second = sum;
+        n--
+        // console.log(sum)
     }
+    return sum;
+}
+const x = 25;
+console.log("recursive fibonacci", fib(x))
+console.log("iterative fibonacci", iterativeFib(x))
